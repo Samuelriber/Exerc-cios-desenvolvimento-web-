@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <div class="container">
+        <h1>Calculadora de IMC</h1>
+    
+      <form action="javascript:void(0);">
+        <label for="peso">Peso (kg):</label>
+        <input type="number" id="peso" placeholder="Coloque seu peso" required>
+
+        <label for="altura">Altura (cm):</label>
+        <input type="number" id="altura" placeholder="Coloque sua altura" required>
+
+        <button type="button" onclick="calculadora()">Calcular</button>
+      </form>
+
+      <p id="resultado"></p>
+      <p id="grauIMC"></p>
+    </div>
+
+    <script>
+      function calculadora() {
+        var peso = document.getElementById("peso").value;
+        var altura = document.getElementById("altura").value;
+
+        if (peso > 0 && altura > 0) {
+          var imc = peso / ((altura / 100) ** 2);
+          document.getElementById("resultado").innerText = "Seu IMC é: " + imc.toFixed(2);
+        } else {
+          alert("Por favor, insira valores válidos para peso e altura.");
+        }
+
+        if (imc < 18.5) {
+          document.getElementById("grauIMC").innerText = "Você está abaixo do peso normal.";
+        }
+
+        if (imc >= 18.5 && imc <= 24.9) {
+          document.getElementById("grauIMC").innerText = "Você está com peso normal.";
+        }
+
+        if (imc >= 25 && imc <= 29.9) {
+          document.getElementById("grauIMC").innerText = "Você está com sobrepeso.";
+        }
+
+        if (imc >= 30 && imc <= 34.9) {
+          document.getElementById("grauIMC").innerText = "Você está com obesidade grau 1.";
+        }
+
+        if (imc >= 35 && imc <= 39.9) {
+          document.getElementById("grauIMC").innerText = "Você está com Obesidade grau II.";
+        }
+
+        if (imc > 40) {
+          document.getElementById("grauIMC").innerText = "Você está com Obesidade grau III (obesidade mórbida).";
+        }
+      }
+    </script>
+  </body>
+</html>

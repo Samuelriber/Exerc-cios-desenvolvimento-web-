@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Tempo de Download</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+<body>
+    <div class="container">
+        <h1>Calculadora de Tempo de Download</h1>
+        <form action="">
+            <label for="arquivo">Tamanho do arquivo em MB que deseja fazer download:</label>
+            <input type="number" id="arquivo" placeholder="Insira o tamanho do arquivo">
+
+            <label for="internet">Velocidade da internet (em Mbps):</label>
+            <input type="number" id="internet" placeholder="Insira a velocidade da internet">
+
+            <button type="button" onclick="velocidaDowload()">
+                Calcular Tempo de Download
+            </button>
+        </form>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function velocidaDowload() {
+            var arquivo = parseFloat(document.getElementById("arquivo").value);
+            var internet = parseFloat(document.getElementById("internet").value);
+            
+            if (arquivo > 0 && internet > 0) {
+                var tempo = (arquivo * 8) / internet;
+                var tempoMinutos = (tempo / 60).toFixed(2);
+                document.getElementById("resultado").innerHTML = "O tempo de download é de aproximadamente: " + tempoMinutos + " minutos";
+            } else {
+                document.getElementById("resultado").innerHTML = "Por favor, insira valores válidos para ambos os campos.";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <div class="container">
+    <h1>Calculadora de Salários</h1>
+    <form action="">
+        <label for="horaTrabalhada"></label>
+        <input type="number" id="horaTrabalhada" placeholder="Horas trabalhadas">
+
+        <label for="valorHora"></label>
+        <input type="number" id="valorHora" placeholder="Valor da hora">
+
+        <button type="button" onclick="salrios()">Calcular Salários</button>
+    </form>
+
+    <p id="resultados"></p>
+    </div>
+    <script>
+        function salrios() {
+            var horas = document.getElementById("horaTrabalhada").value;
+            var valor = document.getElementById("valorHora").value;
+
+            if (horas > 0 && valor > 0) {
+                var salarioBruto = horas * valor;
+                var impostoR = salarioBruto * 0.11;
+                var inss = salarioBruto * 0.08;
+                var sindicato = salarioBruto * 0.05;
+                var salarioFinal = salarioBruto - (impostoR + inss + sindicato);
+
+                var resultados = `
+                    Salário Bruto: R$ ${salarioBruto.toFixed(2)} <br>
+                    Imposto de Renda (11%): R$ ${impostoR.toFixed(2)} <br>
+                    INSS (8%): R$ ${inss.toFixed(2)} <br>
+                    Sindicato (5%): R$ ${sindicato.toFixed(2)} <br>
+                    Salário Final: R$ ${salarioFinal.toFixed(2)}
+                `;
+
+                // Exibindo os resultados na página
+                document.getElementById("resultados").innerHTML = resultados;
+            } else {
+                document.getElementById("resultados").innerText = "Por favor, insira valores válidos para horas e valor por hora.";
+            }
+        }
+    </script>
+</body>
+
+</html>

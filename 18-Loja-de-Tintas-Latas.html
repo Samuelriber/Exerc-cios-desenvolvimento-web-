@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <div class="container">
+    <h1>Loja de Tintas</h1>
+    <form action="">
+        <label for="area">Qual é o tamanho da area que voce desja pintar</label>
+        <input type="number"id="area" placeholder="Coloque area(metros) que você deseja pintar: ">
+        <button type="button" onclick="orcamento()">FAZER ORÇAMENTO</button>
+
+    </form>
+    <p id="resultado"></p>
+    </div>
+</body>
+<script>
+    function orcamento(){
+        var area = document.getElementById("area").value;
+        var cobertura=54;
+        var  valor=80;
+        if(area>0){
+            var qntdlatas= Math.ceil(area/cobertura)
+            var orcamento1= qntdlatas*valor;
+           document.getElementById("resultado").innerHTML = 
+            `Você precisará de ${qntdlatas} lata(s) de tinta.<br>
+            O preço total será R$ ${orcamento1.toFixed(2)}.`
+
+        }else {
+            document.getElementById("resultado").innerText = "Por favor, insira um valor válido para a área.";
+        }
+    }
+
+</script>
+</html>

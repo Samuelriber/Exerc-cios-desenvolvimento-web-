@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+    <h1>Calculadora de Multa</h1>
+    <form action="">
+        <label for="peixes">Quantos kg de peixe você pescou?</label>
+        <input type="number" id="peixes" placeholder="Peixes(kg)">
+        <button type="button" onclick="calculadoraMULTA()">Calcular</button>
+    </form>
+
+    <p id="resultado"></p>
+    </div>
+    <script>
+        function calculadoraMULTA() {
+            var kg = document.getElementById("peixes").value;
+            var valorMulta = 4;
+
+            kg = parseFloat(kg);
+            var resultado;
+
+            if (kg > 50) {
+                resultado = (kg - 50) * valorMulta;
+                document.getElementById("resultado").innerText = "A multa é de R$ " + resultado.toFixed(2);
+            } else {
+                document.getElementById("resultado").innerText = "Não há multa, o peso está dentro do limite.";
+            }
+        }
+    </script>
+</body>
+
+</html>
